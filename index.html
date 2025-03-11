@@ -5,128 +5,379 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>スタッドレスタイヤ脱着のご案内</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-accent: #f9ebea;
+            --text-color: #444;
+            --light-gray: #f8f9fa;
+            --border-radius: 10px;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
         }
 
         .logo-container {
-            text-align: center;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .logo {
-            width: 120px;
+            width: 140px;
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        header h1:after {
+            content: '';
+            position: absolute;
+            width: 30%;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 35%;
         }
 
         main {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
         }
 
-        h1 {
-            font-size: 1.5em;
-            color: #333;
+        section {
+            margin-bottom: 30px;
         }
 
         h2 {
-            font-size: 1.2em;
-            color: #555;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-accent);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
 
         p, li {
-            line-height: 1.6;
-            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.7;
         }
 
-        address {
-            font-style: normal;
-            color: #444;
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
         }
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+        li {
+            margin-bottom: 8px;
         }
 
         .highlight {
             font-weight: bold;
-            color: #d9534f;
+            color: var(--accent-color);
+            background-color: var(--light-accent);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .card {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .address-card {
+            background-color: var(--light-gray);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        address {
+            font-style: normal;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+        }
+
+        .timeline {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .timeline li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .timeline li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+
+        .timeline li:nth-child(1):before {
+            content: '1';
+        }
+
+        .timeline li:nth-child(2):before {
+            content: '2';
+        }
+
+        .timeline li:nth-child(3):before {
+            content: '3';
+        }
+
+        .timeline li:after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 25px;
+            bottom: -15px;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline li:last-child:after {
+            display: none;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .price-table th, .price-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: var(--light-gray);
         }
 
         .contact-info {
             text-align: center;
-            margin-top: 20px;
+            padding: 30px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+        }
+
+        .phone-number {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        .phone-number i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .important-notice {
+            background-color: var(--light-accent);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 25px;
+            }
+
+            .container {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="/api/placeholder/140/80" alt="ロゴ" class="logo">
+            </div>
+            <h1>スタッドレスタイヤ脱着のご案内</h1>
+        </header>
 
-    <div class="logo-container">
-        <img src="logo.png" alt="ロゴ" class="logo">
-    </div>
+        <main>
+            <section>
+                <h2>スタッドレスタイヤについて</h2>
+                <div class="important-notice">
+                    <p>12月～3月末までは、<span class="highlight">スタッドレスタイヤの着用が必須</span>となっております。</p>
+                </div>
+                <div class="card">
+                    <p>30日利用の場合、<strong>6,600円（税込）</strong>の追加オプション料が発生致します。</p>
+                    <p>他の日数での料金は<a href="#contact">こちらからお問い合わせ</a>ください。</p>
+                </div>
+            </section>
 
-    <main>
-        <h1>スタッドレスタイヤについて</h1>
-        <p>12月～3月末までは、<span class="highlight">スタッドレスタイヤの着用が必須</span>です。</p>
-        <ul>
-            <li>30日利用の場合、6,600円（税込）の追加オプション料が発生致します。</li>
-            <li>他の日数での料金は<a href="#contact">こちらからお問い合わせ</a>ください。</li>
-        </ul>
+            <section>
+                <h2>タイヤ交換時期について</h2>
+                <p>11月中に着用完了をお願いし、12月分からご請求いたします。早めのご対応をお願いいたします。</p>
+            </section>
 
-        <h2>タイヤ交換時期について</h2>
-        <p>11月中に着用完了をお願いし、12月分からご請求いたします。</p>
+            <section>
+                <h2>タイヤ交換場所</h2>
+                <div class="address-card">
+                    <address>
+                        <strong>【提携タイヤ交換先情報】</strong><br>
+                        合同会社なないろ 担当：佐々木様<br>
+                        住所：石巻市須江関ノ入39<br>
+                        対応可能時間：平日・土曜 10:00〜18:00
+                    </address>
+                </div>
+            </section>
 
-        <h2>タイヤ交換場所</h2>
-        <address>
-            【提携タイヤ交換先情報】<br>
-            合同会社なないろ 担当：佐々木様<br>
-            住所：石巻市須江関ノ入39<br>
-            対応可能時間：平日・土曜：10:00〜18:00
-        </address>
+            <section>
+                <h2>タイヤ交換日のご申請</h2>
+                <a href="https://forms.wix.com/r/7255430324417463202" target="_blank" class="cta-button">申請フォームはこちら</a>
+            </section>
 
-        <h2>タイヤ交換日のご申請</h2>
-        <p><a href="https://forms.wix.com/r/7255430324417463202" target="_blank">こちらから申請してください</a></p>
+            <section>
+                <h2>タイヤ交換の流れ</h2>
+                <ol class="timeline">
+                    <li>タイヤ交換希望日をフォームより送信してください。</li>
+                    <li>弊社からの返答をお待ちください。</li>
+                    <li>交換日が確定したら、予約時間に直接工場へお越しください。</li>
+                </ol>
+            </section>
 
-        <h2>タイヤ交換の流れ</h2>
-        <ol>
-            <li>タイヤ交換希望日をフォームより送信してください。</li>
-            <li>弊社からの返答をお待ちください。</li>
-            <li>交換日が確定したら、予約時間に直接工場へお越しください。</li>
-        </ol>
+            <section>
+                <h2>4月以降のご利用について</h2>
+                <p>4月以降もレンタカーをご利用の場合、ノーマルタイヤ装着でのご利用が可能です。</p>
+                <div class="important-notice">
+                    <p><span class="highlight">4月1日から14日までの期間</span>にノーマルタイヤへの交換をお願いいたします。この期間中はスタッドレスタイヤの装着料金は発生いたしません。</p>
+                </div>
+                <p>ただし、4月15日以降もスタッドレスタイヤ装着のままご利用される場合は、<span class="highlight">スタッドレスタイヤオプション料金が発生</span>いたしますので、あらかじめご了承ください。</p>
+            </section>
 
-        <h2>4月以降のご利用について</h2>
-        <p>4月以降もレンタカーをご利用の場合、ノーマルタイヤ装着でのご利用が可能です。</p>
-        <p><span class="highlight">4月1日から14日までの期間</span>にノーマルタイヤへの交換をお願いいたします。この期間中はスタッドレスタイヤの装着料金は発生いたしません。</p>
-        <p>ただし、4月15日以降もスタッドレスタイヤ装着のままご利用される場合は、<span class="highlight">スタッドレスタイヤオプション料金が発生</span>いたしますので、あらかじめご了承ください。</p>
+            <section>
+                <h2>その他</h2>
+                <p>タイヤ交換に併せて、エンジンオイル等の点検も実施いたします。ご利用状況により、お客様のご負担となる場合がございますので、あらかじめご了承ください。</p>
+                <ul>
+                    <li>お貸出時より3,000km以上走行している場合</li>
+                    <li>お貸出時より3か月が経過している場合</li>
+                </ul>
 
-        <h2>その他</h2>
-        <p>タイヤ交換に併せて、エンジンオイル等の点検も実施いたします。ご利用状況により、お客様のご負担となる場合がございますので、あらかじめご了承ください。</p>
-        <ul>
-            <li>お貸出時より3,000km以上走行している場合</li>
-            <li>お貸出時より3か月が経過している場合</li>
-        </ul>
-        <p>エンジンオイル交換費用：軽自動車4,000円（税込）　普通自動車6,000円（税込）</p>
+                <table class="price-table">
+                    <tr>
+                        <th>車種</th>
+                        <th>エンジンオイル交換費用（税込）</th>
+                    </tr>
+                    <tr>
+                        <td>軽自動車</td>
+                        <td>4,000円</td>
+                    </tr>
+                    <tr>
+                        <td>普通自動車</td>
+                        <td>6,000円</td>
+                    </tr>
+                </table>
 
-        <h3>【ご請求について】</h3>
-        <p>エンジンオイル交換に伴う費用のご請求は、後日弊社よりご連絡いたします。当日のお支払いは不要です。</p>
+                <h3>【ご請求について】</h3>
+                <p>エンジンオイル交換に伴う費用のご請求は、後日弊社よりご連絡いたします。当日のお支払いは不要です。</p>
+            </section>
+        </main>
 
         <div id="contact" class="contact-info">
             <h2>お問い合わせ</h2>
             <p>ご不明な点がございましたら、お気軽にお問い合わせください。</p>
-            <p><strong>フリーダイヤル:</strong> <a href="tel:0120-204-625">0120-204-625</a></p>
+            <p class="phone-number">フリーダイヤル: <a href="tel:0120-204-625">0120-204-625</a></p>
         </div>
-    </main>
 
+        <footer>
+            <p>&copy; 2025 JBレンタカー石巻店. All Rights Reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
