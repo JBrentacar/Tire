@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>スタッドレスタイヤ脱着のご案内 | JBレンタカー石巻店</title>
     <style>
         :root {
@@ -21,6 +21,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -423,7 +424,7 @@
 
         @media (max-width: 768px) {
             main, .timeline-section {
-                padding: 25px;
+                padding: 20px 15px;
             }
 
             .container {
@@ -431,11 +432,50 @@
             }
 
             .timeline li {
-                padding-left: 45px;
+                padding-left: 40px;
             }
 
             .summary-section {
-                padding: 20px;
+                padding: 20px 15px;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+            
+            .schedule-table {
+                font-size: 0.85rem;
+            }
+            
+            .schedule-table th, .schedule-table td {
+                padding: 8px 5px;
+            }
+            
+            .price-table th, .price-table td {
+                padding: 10px 8px;
+            }
+            
+            .cta-button {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 15px 10px;
+            }
+            
+            .summary-list li {
+                flex-direction: column;
+            }
+            
+            .summary-icon {
+                margin-bottom: 8px;
             }
         }
     </style>
@@ -455,25 +495,25 @@
                 <li>
                     <span class="summary-icon">⚠️</span>
                     <div>
+                        <strong>11月中</strong>にスタッドレスタイヤへの交換が必要です
+                    </div>
+                </li>
+                <li>
+                    <span class="summary-icon">⚠️</span>
+                    <div>
                         <strong>12月～3月末まで</strong>はスタッドレスタイヤの着用が<span class="highlight">必須</span>です
+                    </div>
+                </li>
+                <li>
+                    <span class="summary-icon">⚠️</span>
+                    <div>
+                        <strong>4月1日～14日</strong>の間にノーマルタイヤへの交換が必要です
                     </div>
                 </li>
                 <li>
                     <span class="summary-icon">💰</span>
                     <div>
                         30日利用の場合、<strong>6,600円（税込）</strong>の追加料金が発生します
-                    </div>
-                </li>
-                <li>
-                    <span class="summary-icon">📅</span>
-                    <div>
-                        <strong>11月中</strong>にスタッドレスタイヤへの交換をお願いします
-                    </div>
-                </li>
-                <li>
-                    <span class="summary-icon">🔄</span>
-                    <div>
-                        <strong>4月1日～14日</strong>の間にノーマルタイヤへの交換が必要です
                     </div>
                 </li>
             </ul>
@@ -520,8 +560,14 @@
                 </div>
 
                 <div class="card warning-card">
-                    <div class="card-title">スタッドレスタイヤ着用期間</div>
+                    <div class="card-title">スタッドレスタイヤ必須期間</div>
                     <p><strong>12月～3月末まで</strong>は<span class="highlight">スタッドレスタイヤの着用が必須</span>となっております。安全運転のため、必ず装着してください。</p>
+                </div>
+
+                <div class="card warning-card">
+                    <div class="card-title">重要な交換期間</div>
+                    <p><strong>11月中</strong>に<span class="highlight">スタッドレスタイヤへの交換が必要</span>です。</p>
+                    <p><strong>4月1日～14日</strong>の間に<span class="highlight">ノーマルタイヤへの交換が必要</span>です。</p>
                 </div>
 
                 <div class="card info-card">
@@ -533,6 +579,11 @@
 
             <section>
                 <h2><span class="icon">🔄</span>タイヤ交換手続き</h2>
+                
+                <div class="card warning-card">
+                    <div class="card-title">秋の交換期限</div>
+                    <p><span class="highlight">11月中に</span>スタッドレスタイヤへの交換を完了してください。12月分からタイヤオプション料金が請求されます。</p>
+                </div>
                 
                 <div class="card success-card">
                     <div class="card-title">タイヤ交換申請はこちら</div>
@@ -586,13 +637,18 @@
 
         <main>
             <section>
-                <h2><span class="icon">📌</span>4月以降のご利用について</h2>
-                <p>4月以降もレンタカーをご利用の場合、ノーマルタイヤ装着でのご利用が可能です。</p>
+                <h2><span class="icon">📌</span>ノーマルタイヤ交換について</h2>
                 <div class="card warning-card">
-                    <div class="card-title">タイヤ交換期限</div>
-                    <p><span class="highlight">4月1日から14日までの期間</span>にノーマルタイヤへの交換をお願いいたします。この期間中はスタッドレスタイヤの装着料金は発生いたしません。</p>
+                    <div class="card-title">春の交換期限</div>
+                    <p><span class="highlight">4月1日から14日までの期間</span>にノーマルタイヤへの交換をお願いいたします。この期間中はタイヤ交換の追加料金は発生いたしません。</p>
                 </div>
                 <p>ただし、4月15日以降もスタッドレスタイヤ装着のままご利用される場合は、<span class="highlight">スタッドレスタイヤオプション料金が発生</span>いたしますので、あらかじめご了承ください。</p>
+
+                <div class="card success-card">
+                    <div class="card-title">タイヤ交換申請はこちら</div>
+                    <p>希望日時を下記フォームよりご申請ください。確認後、折り返しご連絡いたします。</p>
+                    <a href="https://jbrentacar.github.io/Tire/form.html" target="_blank" class="cta-button">交換日申請フォーム</a>
+                </div>
             </section>
 
             <section>
