@@ -2,968 +2,445 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>タイヤ交換のご案内 | JBレンタカー石巻店</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --secondary-color: #3498db;
-            --success-color: #2ecc71;
-            --warning-color: #f39c12;
-            --light-accent: #f9ebea;
-            --text-color: #444;
-            --light-gray: #f8f9fa;
-            --border-radius: 12px;
-            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
-            line-height: 1.7;
-            color: var(--text-color);
-            background-color: var(--light-gray);
-            padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            -webkit-font-smoothing: antialiased;
         }
 
         header {
-            text-align: center;
-            padding: 30px 0;
-            background-color: white;
-            border-radius: var(--border-radius);
-            margin-bottom: 30px;
-            box-shadow: var(--box-shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-        }
-
-        .logo-container {
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            width: 140px;
-            height: auto;
-        }
-
-        header h1 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-            font-weight: 700;
-        }
-
-        header h1:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background-color: var(--accent-color);
-            bottom: -10px;
-            left: 25%;
-        }
-
-        .urgent-notice {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            background: linear-gradient(135deg, #0068e9, #0051b5);
             color: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(238, 90, 111, 0.3);
+            padding: 20px 16px 24px;
             text-align: center;
         }
-
-        .urgent-notice h2 {
-            color: white;
-            border: none;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .urgent-boxes {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .urgent-box {
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--primary-color);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .urgent-box .season {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .urgent-box .period {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 10px 0;
-            line-height: 1.3;
-        }
-
-        .urgent-box .description {
-            font-size: 0.95rem;
-            color: #666;
-            margin-top: 10px;
-        }
+        header img { max-width: 100px; margin-bottom: 10px; }
+        header h1 { font-size: 20px; font-weight: 700; }
+        header p { font-size: 13px; opacity: .85; margin-top: 4px; }
 
         main {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            box-shadow: var(--box-shadow);
-            margin-bottom: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 14px 60px;
         }
 
-        .timeline-section {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            box-shadow: var(--box-shadow);
-            margin-bottom: 30px;
-        }
-
-        section {
-            margin-bottom: 35px;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--light-accent);
+        /* 予約ボタン（最重要） */
+        .reserve-btn {
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 18px 24px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(39,174,96,.35);
+            margin-bottom: 20px;
         }
+        .reserve-btn:active { opacity: .9; }
 
-        h2 .icon {
-            margin-right: 10px;
-            color: var(--accent-color);
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin: 15px 0 10px;
-        }
-
-        p, li {
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-
-        ul, ol {
-            padding-left: 25px;
+        /* 交換時期カード */
+        .season-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
-        li {
-            margin-bottom: 12px;
+        .season-card {
+            background: white;
+            border-radius: 14px;
+            padding: 18px 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.07);
+            text-align: center;
         }
 
-        .highlight {
-            font-weight: bold;
-            color: var(--accent-color);
-            background-color: var(--light-accent);
-            padding: 2px 5px;
-            border-radius: 4px;
+        .season-emoji { font-size: 28px; margin-bottom: 8px; }
+        .season-label { font-size: 11px; color: #999; margin-bottom: 4px; }
+        .season-period { font-size: 18px; font-weight: 700; color: #0068e9; line-height: 1.3; }
+        .season-desc { font-size: 12px; color: #777; margin-top: 6px; }
+
+        /* セクション */
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #999;
+            letter-spacing: .1em;
+            margin: 0 4px 10px;
         }
 
         .card {
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+            background: white;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.07);
+            margin-bottom: 12px;
         }
 
         .card-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .info-card {
-            border-left: 4px solid var(--secondary-color);
-            background-color: rgba(52, 152, 219, 0.1);
-        }
-
-        .warning-card {
-            border-left: 4px solid var(--accent-color);
-            background-color: var(--light-accent);
-        }
-
-        .success-card {
-            border-left: 4px solid var(--success-color);
-            background-color: rgba(46, 204, 113, 0.1);
-        }
-
-        .timeline {
-            list-style-type: none;
-            padding-left: 0;
-            position: relative;
-        }
-
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background-color: var(--primary-color);
-        }
-
-        .timeline li {
-            position: relative;
-            padding-left: 50px;
-            margin-bottom: 30px;
-        }
-
-        .timeline li:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            color: white;
-            text-align: center;
-            line-height: 30px;
             font-size: 14px;
-            z-index: 2;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .timeline li:nth-child(1):before {
-            content: '1';
-        }
-
-        .timeline li:nth-child(2):before {
-            content: '2';
-        }
-
-        .timeline li:nth-child(3):before {
-            content: '3';
-        }
-
-        .timeline-date {
-            display: block;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .timeline-content {
-            padding: 15px;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .address-card {
-            background-color: var(--light-gray);
-            border-left: 4px solid var(--primary-color);
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-        }
-
-        address {
-            font-style: normal;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin: 15px 0;
-            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
-            text-align: center;
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(46, 204, 113, 0.4);
-            text-decoration: none;
+        .card-title .badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
             color: white;
         }
+        .badge-red  { background: #e74c3c; }
+        .badge-blue { background: #0068e9; }
 
-        .cta-button::before {
-            content: '📝 ';
-            font-size: 1.2rem;
+        .card p, .card li {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
         }
 
-        .primary-cta {
-            background: white;
-            color: #e74c3c;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            font-size: 1.2rem;
-            padding: 20px 50px;
-            animation: pulse 2s infinite;
-            border: 3px solid white;
-        }
+        .card ul { padding-left: 20px; }
+        .card li { margin-bottom: 4px; }
 
-        .primary-cta:hover {
-            background: #fff5f5;
-            color: #c0392b;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-            border-color: white;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .bottom-cta-section {
-            background: linear-gradient(135deg, var(--success-color) 0%, #27ae60 100%);
-            color: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
-        }
-
-        .bottom-cta-section h2 {
-            color: white;
-            border: none;
+        /* 警告バー */
+        .alert-bar {
+            background: #fff3cd;
+            border: 1.5px solid #ffc600;
+            border-radius: 12px;
+            padding: 14px 16px;
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
         }
+        .alert-bar i { color: #f39c12; font-size: 20px; margin-top: 2px; flex-shrink: 0; }
+        .alert-bar p { font-size: 14px; color: #555; line-height: 1.6; }
+        .alert-bar strong { color: #333; }
 
-        .bottom-cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            line-height: 1.8;
-        }
-
-        .bottom-cta {
+        /* 年間スケジュール */
+        .schedule-bar {
             background: white;
-            color: var(--success-color);
-            font-size: 1.3rem;
-            padding: 22px 60px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border: 3px solid white;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.07);
+            margin-bottom: 20px;
         }
 
-        .bottom-cta:hover {
-            background: #f0fff4;
-            color: #229954;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        .schedule-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
         }
 
+        .months {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 3px;
+        }
+
+        .month-item {
+            text-align: center;
+            border-radius: 6px;
+            padding: 6px 2px;
+        }
+
+        .month-item .m-label { font-size: 10px; color: #999; margin-bottom: 3px; }
+        .month-item .m-bar { height: 28px; border-radius: 4px; }
+
+        .m-studless .m-bar { background: #0068e9; }
+        .m-normal   .m-bar { background: #e0e0e0; }
+        .m-change   .m-bar { background: #ffc600; }
+
+        .schedule-legend {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+        }
+
+        /* 3ステップ */
+        .steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 20px; }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .step-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #0068e9;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-line {
+            width: 2px;
+            flex: 1;
+            min-height: 24px;
+            background: #d0e4ff;
+            margin: 4px 0;
+        }
+
+        .step:last-child .step-line { display: none; }
+
+        .step-body {
+            background: white;
+            border-radius: 12px;
+            padding: 14px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.07);
+            flex: 1;
+            margin-bottom: 12px;
+        }
+
+        .step-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .step-body p  { font-size: 13px; color: #666; line-height: 1.6; }
+
+        /* 料金テーブル */
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
-            overflow: hidden;
+            font-size: 14px;
         }
-
-        .price-table th, .price-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
         .price-table th {
-            background-color: var(--primary-color);
+            background: #0068e9;
             color: white;
-        }
-
-        .price-table tr:nth-child(even) {
-            background-color: var(--light-gray);
-        }
-
-        .price-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .contact-info {
-            text-align: center;
-            padding: 35px;
-            background-color: white;
-            border-radius: var(--border-radius);
-            margin-top: 30px;
-            box-shadow: var(--box-shadow);
-        }
-
-        .phone-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 20px 0;
-            display: inline-block;
-        }
-
-        .phone-number a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .phone-number a:hover {
-            color: var(--accent-color);
-        }
-
-        .phone-icon {
-            display: inline-block;
-            margin-right: 10px;
-            color: var(--accent-color);
-            vertical-align: middle;
-        }
-
-        .business-hours {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: var(--light-gray);
-            border-radius: 10px;
-            display: inline-block;
-            min-width: 320px;
-        }
-
-        .business-hours p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .hours-table {
-            width: 100%;
-            border-collapse: collapse;
+            padding: 10px 14px;
             text-align: left;
         }
-
-        .hours-table td {
-            padding: 10px 15px;
-            border-bottom: 1px solid #e0e0e0;
+        .price-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #eee;
+            color: #555;
         }
+        .price-table tr:last-child td { border-bottom: none; }
 
-        .hours-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .hours-table td:first-child {
-            font-weight: bold;
-            color: var(--primary-color);
-            width: 40%;
-        }
-
-        .hours-table td:last-child {
-            text-align: right;
-        }
-
-        .hours-table .closed-day {
-            text-align: center;
-            color: var(--accent-color);
-            font-weight: bold;
-            padding-top: 15px;
-            background-color: var(--light-accent);
-            border-radius: 5px;
-        }
-
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .schedule-table th, .schedule-table td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #eee;
-        }
-
-        .schedule-table th {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .schedule-table .month {
-            font-weight: bold;
-            background-color: var(--light-gray);
-        }
-
-        .schedule-table .required {
-            background-color: var(--light-accent);
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .schedule-table .optional {
-            background-color: rgba(46, 204, 113, 0.1);
-            color: var(--success-color);
-        }
-
-        .summary-section {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 0;
-            margin-bottom: 30px;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-
-        .summary-section h2 {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
-            color: white;
-            padding: 20px 30px;
-            margin: 0;
-            border: none;
-            font-size: 1.4rem;
-        }
-
-        .summary-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .summary-list li {
-            padding: 25px 30px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.2s;
-        }
-
-        .summary-list li:hover {
-            background-color: #fafafa;
-        }
-
-        .summary-list li:last-child {
-            border-bottom: none;
-        }
-
-        .summary-icon {
-            font-size: 2rem;
-            margin-right: 20px;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .step-instructions {
-            background-color: white;
-            border-radius: var(--border-radius);
+        /* お問い合わせ */
+        .contact-card {
+            background: white;
+            border-radius: 14px;
             padding: 20px;
-            margin-top: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,.07);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-card .tel {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0068e9;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .contact-card .hours {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.8;
         }
 
         footer {
+            background: linear-gradient(135deg, #0068e9, #0051b5);
+            color: white;
             text-align: center;
-            padding: 20px;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            main, .timeline-section {
-                padding: 20px 15px;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .timeline li {
-                padding-left: 40px;
-            }
-
-            .urgent-notice {
-                padding: 20px 15px;
-            }
-
-            .urgent-boxes {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .urgent-box .period {
-                font-size: 1.5rem;
-            }
-
-            .summary-section h2 {
-                padding: 15px 20px;
-                font-size: 1.2rem;
-            }
-
-            .summary-list li {
-                padding: 20px 15px;
-                flex-direction: row;
-                align-items: flex-start;
-            }
-
-            .summary-icon {
-                font-size: 1.5rem;
-                min-width: 35px;
-                margin-right: 15px;
-            }
-            
-            header h1 {
-                font-size: 1.5rem;
-            }
-            
-            h2 {
-                font-size: 1.3rem;
-            }
-            
-            .card {
-                padding: 20px 15px;
-            }
-            
-            .schedule-table {
-                font-size: 0.75rem;
-            }
-            
-            .schedule-table th, .schedule-table td {
-                padding: 6px 3px;
-            }
-            
-            .price-table th, .price-table td {
-                padding: 10px 8px;
-            }
-            
-            .cta-button {
-                display: block;
-                width: 100%;
-                text-align: center;
-                padding: 15px 10px;
-                font-size: 1rem;
-            }
-
-            .primary-cta {
-                padding: 18px 20px;
-                font-size: 1.1rem;
-            }
-
-            .bottom-cta-section {
-                padding: 30px 20px;
-            }
-
-            .bottom-cta-section h2 {
-                font-size: 1.3rem;
-            }
-
-            .bottom-cta {
-                font-size: 1.1rem;
-                padding: 18px 30px;
-            }
-
-            .business-hours {
-                min-width: 280px;
-                padding: 15px;
-            }
-
-            .hours-table td {
-                padding: 8px 10px;
-                font-size: 0.95rem;
-            }
+            padding: 18px;
+            font-size: 13px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="logo.png" alt="JBレンタカー石巻店ロゴ" class="logo">
-            </div>
-            <h1>タイヤ交換のご案内</h1>
-        </header>
 
-        <div class="urgent-notice">
-            <h2>🚨 タイヤ交換が必要な時期です</h2>
-            <div class="urgent-boxes">
-                <div class="urgent-box">
-                    <span class="season">🍂 秋の交換</span>
-                    <div class="period">11月中</div>
-                    <div class="description">スタッドレスタイヤへ交換</div>
-                </div>
-                <div class="urgent-box">
-                    <span class="season">🌸 春の交換</span>
-                    <div class="period">4月1日〜14日</div>
-                    <div class="description">ノーマルタイヤへ交換</div>
-                </div>
-            </div>
-            <a href="https://jbrentacar.github.io/Tire/form.html" target="_blank" class="cta-button primary-cta">今すぐ交換日を予約する</a>
+<header>
+    <img src="logo.png" alt="JBレンタカー石巻店">
+    <h1>タイヤ交換のご案内</h1>
+    <p>JBレンタカー石巻店</p>
+</header>
+
+<main>
+
+    <!-- 予約ボタン -->
+    <a href="https://jbrentacar.github.io/Tire/form.html" class="reserve-btn">
+        <i class="fas fa-calendar-check"></i> タイヤ交換を予約する
+    </a>
+
+    <!-- 交換時期 -->
+    <div class="section-label">交換時期</div>
+    <div class="season-grid">
+        <div class="season-card">
+            <div class="season-emoji">🍂</div>
+            <div class="season-label">秋の交換</div>
+            <div class="season-period">11月中</div>
+            <div class="season-desc">スタッドレスへ</div>
         </div>
-
-        <div class="summary-section">
-            <h2>📋 重要ポイント</h2>
-            <ul class="summary-list">
-                <li>
-                    <span class="summary-icon">⚠️</span>
-                    <div>
-                        <strong>12月～3月末まで</strong>はスタッドレスタイヤの着用が<span class="highlight">必須</span>です
-                    </div>
-                </li>
-                <li>
-                    <span class="summary-icon">💰</span>
-                    <div>
-                        30日利用の場合、<strong>6,600円（税込）</strong>の追加料金が発生します
-                    </div>
-                </li>
-                <li>
-                    <span class="summary-icon">🔧</span>
-                    <div>
-                        タイヤ交換時にエンジンオイル等の点検も実施します
-                    </div>
-                </li>
-            </ul>
+        <div class="season-card">
+            <div class="season-emoji">🌸</div>
+            <div class="season-label">春の交換</div>
+            <div class="season-period">4/1〜4/14</div>
+            <div class="season-desc">ノーマルへ</div>
         </div>
-
-        <div class="timeline-section">
-            <h2><span class="icon">📝</span>タイヤ交換の3ステップ</h2>
-            <ol class="timeline">
-                <li>
-                    <span class="timeline-date">ステップ 1</span>
-                    <div class="timeline-content">
-                        <strong>フォームから希望日を送信</strong>
-                        <div class="step-instructions">
-                            <p>以下の情報を入力してください：</p>
-                            <ul>
-                                <li>お名前</li>
-                                <li>ご希望日時（第2希望まで）</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="timeline-date">ステップ 2</span>
-                    <div class="timeline-content">
-                        <strong>弊社から確定日をご連絡</strong>
-                        <p>ご希望日時を調整後、確定日をお知らせいたします</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="timeline-date">ステップ 3</span>
-                    <div class="timeline-content">
-                        <strong>予約時間に工場へお越しください</strong>
-                        <p>提携タイヤ交換先：合同会社なないろ<br>
-                        石巻市須江関ノ入39</p>
-                    </div>
-                </li>
-            </ol>
-        </div>
-
-        <main>
-            <section>
-                <h2><span class="icon">📅</span>年間スケジュール</h2>
-                <div class="card info-card">
-                    <div class="card-title">月別タイヤ装着ガイド</div>
-                    <table class="schedule-table">
-                        <tr>
-                            <th colspan="12">1年間のタイヤ交換スケジュール</th>
-                        </tr>
-                        <tr class="month">
-                            <td>1月</td>
-                            <td>2月</td>
-                            <td>3月</td>
-                            <td>4月</td>
-                            <td>5月</td>
-                            <td>6月</td>
-                            <td>7月</td>
-                            <td>8月</td>
-                            <td>9月</td>
-                            <td>10月</td>
-                            <td>11月</td>
-                            <td>12月</td>
-                        </tr>
-                        <tr>
-                            <td class="required">スタッドレス</td>
-                            <td class="required">スタッドレス</td>
-                            <td class="required">スタッドレス</td>
-                            <td class="optional">交換期間</td>
-                            <td>ノーマル</td>
-                            <td>ノーマル</td>
-                            <td>ノーマル</td>
-                            <td>ノーマル</td>
-                            <td>ノーマル</td>
-                            <td>ノーマル</td>
-                            <td class="optional">交換期間</td>
-                            <td class="required">スタッドレス</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="card warning-card">
-                    <div class="card-title">⚠️ スタッドレスタイヤ必須期間</div>
-                    <p><strong>12月～3月末まで</strong>は<span class="highlight">スタッドレスタイヤの着用が必須</span>です。安全運転のため、必ず装着してください。</p>
-                </div>
-
-                <div class="card info-card">
-                    <div class="card-title">💰 料金について</div>
-                    <p>30日利用の場合、<strong>6,600円（税込）</strong>の追加オプション料が発生いたします。</p>
-                    <p>他の日数での料金は<a href="#contact">こちらからお問い合わせ</a>ください。</p>
-                </div>
-            </section>
-
-            <section>
-                <h2><span class="icon">📍</span>タイヤ交換場所</h2>
-                <div class="address-card">
-                    <address>
-                        <strong>【提携タイヤ交換先】</strong><br>
-                        合同会社なないろ（担当：佐々木様）<br>
-                        📍 住所：石巻市須江関ノ入39<br>
-                        🕐 対応可能時間：平日・土曜 10:00〜18:00
-                    </address>
-                </div>
-            </section>
-
-            <section>
-                <h2><span class="icon">📌</span>交換期限の詳細</h2>
-                
-                <div class="card warning-card">
-                    <div class="card-title">🍂 秋の交換（スタッドレスへ）</div>
-                    <p><span class="highlight">11月中</span>にスタッドレスタイヤへの交換を完了してください。</p>
-                    <p><small>※ 12月分からタイヤオプション料金が請求されます</small></p>
-                </div>
-
-                <div class="card warning-card">
-                    <div class="card-title">🌸 春の交換（ノーマルへ）</div>
-                    <p><span class="highlight">4月1日～4月14日の期間中</span>にノーマルタイヤへの交換をお願いいたします。</p>
-                    <p><small>※ この期間中はスタッドレスタイヤオプションの追加料金は発生しません</small></p>
-                    <p><small>※ 4月15日以降もスタッドレスタイヤのまま利用される場合は、オプション料金が発生します</small></p>
-                </div>
-            </section>
-        </main>
-
-        <main>
-
-            <section>
-                <h2><span class="icon">🔧</span>メンテナンスについて</h2>
-                <p>タイヤ交換時に、エンジンオイル等の点検も実施いたします。</p>
-                
-                <div class="card info-card">
-                    <div class="card-title">お客様負担となる条件</div>
-                    <p>以下の条件に該当する場合、交換費用をご負担いただきます：</p>
-                    <ul>
-                        <li>お貸出時（又は最終施工日）より<strong>3,000km以上</strong>走行している場合</li>
-                        <li>お貸出時（又は最終施工日）より<strong>3か月</strong>が経過している場合</li>
-                    </ul>
-                </div>
-
-                <table class="price-table">
-                    <tr>
-                        <th>車種</th>
-                        <th>エンジンオイル交換費用（税込）</th>
-                    </tr>
-                    <tr>
-                        <td>軽自動車</td>
-                        <td>4,000円</td>
-                    </tr>
-                    <tr>
-                        <td>普通自動車</td>
-                        <td>6,000円</td>
-                    </tr>
-                </table>
-
-                <div class="card success-card">
-                    <div class="card-title">💳 お支払いについて</div>
-                    <p>エンジンオイル交換費用のご請求は、後日弊社よりご連絡いたします。</p>
-                    <p><strong>当日のお支払いは不要です。</strong></p>
-                </div>
-            </section>
-        </main>
-
-        <div class="bottom-cta-section">
-            <h2>📝 タイヤ交換のご予約はこちら</h2>
-            <p>
-                希望日時を入力するだけで簡単予約！<br>
-                確認後、折り返しご連絡いたします。
-            </p>
-            <a href="https://jbrentacar.github.io/Tire/form.html" target="_blank" class="cta-button bottom-cta">交換日を予約する</a>
-        </div>
-
-        <div id="contact" class="contact-info">
-            <h2><span class="icon">📞</span>お問い合わせ</h2>
-            <p>ご不明な点がございましたら、お気軽にお問い合わせください。</p>
-            <p class="phone-number">
-                <span class="phone-icon">📞</span>
-                <a href="tel:0120-204-625">0120-204-625</a>
-            </p>
-            <div class="business-hours">
-                <p><strong>📅 受付時間</strong></p>
-                <table class="hours-table">
-                    <tr>
-                        <td>平日</td>
-                        <td>9:00〜18:00</td>
-                    </tr>
-                    <tr>
-                        <td>土日</td>
-                        <td>10:00〜16:00</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="closed-day">水曜・祝日は定休日</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <footer>
-            <p>&copy; 2025 JBレンタカー石巻店. All Rights Reserved.</p>
-        </footer>
     </div>
+
+    <!-- 注意 -->
+    <div class="alert-bar">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p><strong>12月〜3月末</strong>はスタッドレスタイヤの装着が<strong>必須</strong>です。4月15日以降もスタッドレスのまま利用される場合はオプション料金が発生します。</p>
+    </div>
+
+    <!-- 年間スケジュール -->
+    <div class="schedule-bar">
+        <div class="schedule-title">年間タイヤスケジュール</div>
+        <div class="months">
+            <div class="month-item m-studless"><div class="m-label">1</div><div class="m-bar"></div></div>
+            <div class="month-item m-studless"><div class="m-label">2</div><div class="m-bar"></div></div>
+            <div class="month-item m-studless"><div class="m-label">3</div><div class="m-bar"></div></div>
+            <div class="month-item m-change">  <div class="m-label">4</div><div class="m-bar"></div></div>
+            <div class="month-item m-normal">  <div class="m-label">5</div><div class="m-bar"></div></div>
+            <div class="month-item m-normal">  <div class="m-label">6</div><div class="m-bar"></div></div>
+            <div class="month-item m-normal">  <div class="m-label">7</div><div class="m-bar"></div></div>
+            <div class="month-item m-normal">  <div class="m-label">8</div><div class="m-bar"></div></div>
+            <div class="month-item m-normal">  <div class="m-label">9</div><div class="m-bar"></div></div>
+            <div class="month-item m-normal">  <div class="m-label">10</div><div class="m-bar"></div></div>
+            <div class="month-item m-change">  <div class="m-label">11</div><div class="m-bar"></div></div>
+            <div class="month-item m-studless"><div class="m-label">12</div><div class="m-bar"></div></div>
+        </div>
+        <div class="schedule-legend">
+            <div class="legend-item"><div class="legend-color" style="background:#0068e9"></div>スタッドレス</div>
+            <div class="legend-item"><div class="legend-color" style="background:#e0e0e0"></div>ノーマル</div>
+            <div class="legend-item"><div class="legend-color" style="background:#ffc600"></div>交換期間</div>
+        </div>
+    </div>
+
+    <!-- 予約の流れ -->
+    <div class="section-label">予約の流れ</div>
+    <div class="steps">
+        <div class="step">
+            <div class="step-left">
+                <div class="step-num">1</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+                <h3>フォームから希望日を送信</h3>
+                <p>お名前・希望日時（第2希望まで）を入力してください。</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-left">
+                <div class="step-num">2</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+                <h3>弊社から確定日をご連絡</h3>
+                <p>日程調整後、確定日をお知らせします。</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-left">
+                <div class="step-num">3</div>
+            </div>
+            <div class="step-body">
+                <h3>工場へお越しください</h3>
+                <p>合同会社なないろ（石巻市須江関ノ入39）<br>対応時間：平日・土曜 10:00〜18:00</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 料金 -->
+    <div class="section-label">料金</div>
+    <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px;">
+        <table class="price-table">
+            <tr><th colspan="2">スタッドレスタイヤオプション料金</th></tr>
+            <tr><td>30日利用の場合</td><td><strong>6,600円（税込）</strong></td></tr>
+            <tr><td>その他日数</td><td>お問い合わせください</td></tr>
+        </table>
+    </div>
+
+    <!-- メンテナンス -->
+    <div class="section-label">メンテナンス（タイヤ交換時に実施）</div>
+    <div class="card" style="margin-bottom:8px;">
+        <div class="card-title">
+            <i class="fas fa-oil-can" style="color:#0068e9"></i>
+            エンジンオイル交換
+            <span class="badge badge-red">条件あり</span>
+        </div>
+        <p>以下のいずれかに該当する場合、費用をご負担いただきます：</p>
+        <ul style="margin-top:8px;">
+            <li>貸出時（または最終施工日）より <strong>3,000km以上</strong>走行している場合</li>
+            <li>貸出時（または最終施工日）より <strong>3ヶ月以上</strong>経過している場合</li>
+        </ul>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px;">
+        <table class="price-table">
+            <tr><th>車種</th><th>エンジンオイル交換費用（税込）</th></tr>
+            <tr><td>軽自動車</td><td>4,000円</td></tr>
+            <tr><td>普通自動車</td><td>6,000円</td></tr>
+        </table>
+    </div>
+    <div class="alert-bar" style="margin-bottom:20px;">
+        <i class="fas fa-credit-card" style="color:#0068e9;"></i>
+        <p>エンジンオイル交換費用は<strong>後日弊社よりご請求</strong>いたします。当日のお支払いは不要です。</p>
+    </div>
+
+    <!-- お問い合わせ -->
+    <div class="section-label">お問い合わせ</div>
+    <div class="contact-card">
+        <p style="font-size:14px;color:#666;">ご不明な点はお気軽にどうぞ</p>
+        <a href="tel:0120204625" class="tel">0120-204-625</a>
+        <div class="hours">
+            平日 9:00〜18:00 ／ 土日 10:00〜16:00<br>
+            <span style="color:#e74c3c;font-weight:700;">水曜・祝日定休</span>
+        </div>
+    </div>
+
+    <!-- 再度予約ボタン -->
+    <a href="https://jbrentacar.github.io/Tire/form.html" class="reserve-btn">
+        <i class="fas fa-calendar-check"></i> タイヤ交換を予約する
+    </a>
+
+</main>
+
+<footer>
+    © 2025 JBレンタカー石巻店
+</footer>
+
 </body>
 </html>
