@@ -3,276 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>タイヤ交換日調整フォーム</title>
+    <title>タイヤ交換日調整フォーム - JBレンタカー石巻店</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --bg-color: #f9f9f9;
-            --text-color: #333;
-            --light-gray: #ecf0f1;
-            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
+
+        header {
+            background: linear-gradient(135deg, #0068e9, #0051b5);
+            padding: 20px 16px 24px;
+            text-align: center;
+            color: white;
         }
-        
-        h2 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        
-        h3 {
-            color: var(--secondary-color);
-            margin-top: 25px;
-        }
-        
-        p {
-            margin-bottom: 20px;
-        }
-        
-        ul {
-            background-color: var(--light-gray);
-            padding: 15px 15px 15px 35px;
-            border-radius: 5px;
-            margin-bottom: 25px;
-        }
-        
-        li {
+
+        header img {
+            max-width: 90px;
             margin-bottom: 8px;
         }
-        
-        form {
-            margin-top: 20px;
+
+        header h1 {
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: .05em;
         }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+
+        header p {
+            font-size: 13px;
+            opacity: .85;
+            margin-top: 4px;
         }
-        
-        input[type="text"],
-        input[type="date"],
-        input[type="time"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 14px 60px;
         }
-        
-        fieldset {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 20px;
+
+        /* 案内カード */
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.07);
+            padding: 18px 18px 14px;
+            margin-bottom: 16px;
         }
-        
-        legend {
-            font-weight: bold;
-            color: var(--primary-color);
-            padding: 0 10px;
-        }
-        
-        .time-group {
+
+        .info-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
+            gap: 8px;
+        }
+
+        .info-card-title i { color: #0068e9; }
+
+        .info-card p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.75;
+        }
+
+        /* 工場情報 */
+        .shop-row {
+            display: flex;
+            align-items: flex-start;
             gap: 10px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
-        
-        .time-group input {
-            flex: 1;
+
+        .shop-row i {
+            color: #0068e9;
+            width: 16px;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
-        
-        .confirmation-box {
-            background-color: var(--light-gray);
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            border-left: 4px solid var(--primary-color);
+
+        /* フォームカード */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.08);
+            padding: 22px 18px;
+            margin-bottom: 16px;
         }
-        
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+
+        .form-card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        button:hover {
-            background-color: #2980b9;
+
+        .form-card-title i { color: #0068e9; }
+
+        .field-group {
+            margin-bottom: 14px;
         }
-        
-        .required {
-            color: var(--accent-color);
+
+        .field-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 6px;
         }
-        
-        .note {
-            font-size: 14px;
-            color: #666;
+
+        .field-group input,
+        .field-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #dde3ec;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #333;
+            background: #fafbfd;
+            transition: border-color .2s, box-shadow .2s;
+            -webkit-appearance: none;
+        }
+
+        .field-group input:focus,
+        .field-group select:focus {
+            outline: none;
+            border-color: #0068e9;
+            box-shadow: 0 0 0 3px rgba(0,104,233,.15);
+            background: white;
+        }
+
+        .field-hint {
+            font-size: 12px;
+            color: #999;
             margin-top: 5px;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                padding: 15px;
-            }
-            
-            button {
-                width: 100%;
-            }
+        /* 希望日セクション */
+        .pref-block {
+            background: #f7f9fc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .pref-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0068e9;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .date-time-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* 確認チェック */
+        .check-card {
+            background: #fff8e1;
+            border: 1.5px solid #ffc600;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .check-card input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            accent-color: #0068e9;
+            cursor: pointer;
+        }
+
+        .check-card-text {
+            font-size: 13px;
+            color: #7a6000;
+            line-height: 1.7;
+        }
+
+        /* 送信ボタン */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0068e9, #0051b5);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,104,233,.35);
+            transition: transform .2s, box-shadow .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:active {
+            transform: scale(.98);
+            box-shadow: 0 2px 6px rgba(0,104,233,.3);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #0068e9, #0051b5);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 13px;
+            line-height: 1.8;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>タイヤ交換日調整フォーム</h2>
-        <p>この度はJBレンタカーをご利用いただきありがとうございます。<br>
-           現在お貸し出し中のレンタカーは、タイヤ交換が必要な時期を迎えております。<br>
-           つきましては、タイヤ交換のご希望日をお知らせください。</p>
-        
-        <h3>【タイヤ交換先情報】</h3>
-        <ul>
-            <li>合同会社なないろ 担当：佐々木様</li>
-            <li>住所：石巻市須江関ノ入39</li>
-            <li>対応可能時間：平日・土曜10:00〜18:00</li>
-        </ul>
-        
-        <form action="https://ssgform.com/s/4MtuF6rGAOkr" method="post">
-            <div class="form-group">
-                <label for="contractor">ご契約者名 <span class="required">*</span></label>
-                <input type="text" id="contractor" name="ご契約者名" placeholder="石巻　太郎" required>
-            </div>
-            
-            <fieldset>
-                <legend>第一希望 <span class="required">*</span></legend>
-                <div class="form-group">
-                    <label for="date1">日付:</label>
-                    <input type="date" id="date1" name="第一希望日" required>
-                    <p class="note">※日曜日は選択できません</p>
-                </div>
-                
-                <div class="form-group">
-                    <label for="time1">時間:</label>
-                    <select id="time1" name="第一希望時間" required>
-                        <option value="">選択してください</option>
-                        <option value="10:00">10:00</option>
-                        <option value="10:30">10:30</option>
-                        <option value="11:00">11:00</option>
-                        <option value="11:30">11:30</option>
-                        <option value="12:00">12:00</option>
-                        <option value="12:30">12:30</option>
-                        <option value="13:00">13:00</option>
-                        <option value="13:30">13:30</option>
-                        <option value="14:00">14:00</option>
-                        <option value="14:30">14:30</option>
-                        <option value="15:00">15:00</option>
-                        <option value="15:30">15:30</option>
-                        <option value="16:00">16:00</option>
-                        <option value="16:30">16:30</option>
-                        <option value="17:00">17:00</option>
-                        <option value="17:30">17:30</option>
-                        <option value="18:00">18:00</option>
-                    </select>
-                </div>
-            </fieldset>
-            
-            <fieldset>
-                <legend>第二希望 <span class="required">*</span></legend>
-                <div class="form-group">
-                    <label for="date2">日付:</label>
-                    <input type="date" id="date2" name="第二希望日" required>
-                    <p class="note">※日曜日は選択できません</p>
-                </div>
-                
-                <div class="form-group">
-                    <label for="time2">時間:</label>
-                    <select id="time2" name="第二希望時間" required>
-                        <option value="">選択してください</option>
-                        <option value="10:00">10:00</option>
-                        <option value="10:30">10:30</option>
-                        <option value="11:00">11:00</option>
-                        <option value="11:30">11:30</option>
-                        <option value="12:00">12:00</option>
-                        <option value="12:30">12:30</option>
-                        <option value="13:00">13:00</option>
-                        <option value="13:30">13:30</option>
-                        <option value="14:00">14:00</option>
-                        <option value="14:30">14:30</option>
-                        <option value="15:00">15:00</option>
-                        <option value="15:30">15:30</option>
-                        <option value="16:00">16:00</option>
-                        <option value="16:30">16:30</option>
-                        <option value="17:00">17:00</option>
-                        <option value="17:30">17:30</option>
-                        <option value="18:00">18:00</option>
-                    </select>
-                </div>
-            </fieldset>
-            
-            <div class="confirmation-box">
-                <label class="checkbox-container">
-                    <input type="checkbox" name="確認事項" required>
-                    対応可能日時は平日・土曜の10:00～18:00となります。<br>
-                    本回答のみでは予約は確定いたしません。ご回答いただいた後、提携先工場の空き状況を確認させていただきますので、予約確定のご連絡をお待ちください。
-                </label>
-            </div>
-            
-            <button type="submit">送信する</button>
-        </form>
+
+<header>
+    <img src="logo.png" alt="JBレンタカー石巻店">
+    <h1>タイヤ交換日調整フォーム</h1>
+    <p>ご希望の日程をお知らせください</p>
+</header>
+
+<main>
+
+    <!-- 案内 -->
+    <div class="info-card">
+        <div class="info-card-title">
+            <i class="fas fa-info-circle"></i> ご案内
+        </div>
+        <p>現在お貸し出し中のレンタカーはタイヤ交換の時期を迎えております。ご希望の日程を第一・第二希望でお知らせください。提携先工場の空き状況を確認後、予約確定のご連絡をいたします。</p>
     </div>
 
-    <script>
-        // 現在の日付を取得
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const dd = String(today.getDate()).padStart(2, '0');
-        const formattedToday = `${yyyy}-${mm}-${dd}`;
-        
-        // 日付入力フィールドの最小値を今日に設定
-        document.querySelectorAll('input[type="date"]').forEach(input => {
-            input.setAttribute('min', formattedToday);
-            
-            // 日曜日チェック
-            input.addEventListener('input', () => {
-                if (input.value) {
-                    const selectedDay = new Date(input.value).getDay();
-                    if (selectedDay === 0) {
-                        alert('日曜日は選択できません。');
-                        input.value = '';
-                    }
-                }
-            });
+    <!-- 工場情報 -->
+    <div class="info-card">
+        <div class="info-card-title">
+            <i class="fas fa-warehouse"></i> タイヤ交換先
+        </div>
+        <div class="shop-row">
+            <i class="fas fa-building"></i>
+            <span>合同会社なないろ（担当：佐々木様）</span>
+        </div>
+        <div class="shop-row">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>石巻市須江関ノ入39</span>
+        </div>
+        <div class="shop-row">
+            <i class="fas fa-clock"></i>
+            <span>対応時間：平日・土曜 10:00〜18:00<br><span style="color:#e74c3c;font-weight:700;">日曜・祝日は対応不可</span></span>
+        </div>
+    </div>
+
+    <!-- フォーム -->
+    <form action="https://ssgform.com/s/4MtuF6rGAOkr" method="post">
+
+        <div class="form-card">
+            <div class="form-card-title">
+                <i class="fas fa-user"></i> ご契約者情報
+            </div>
+            <div class="field-group">
+                <label>ご契約者名 <span style="color:#e74c3c;">*</span></label>
+                <input type="text" name="ご契約者名" placeholder="例）石巻 太郎" required>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <div class="form-card-title">
+                <i class="fas fa-calendar-alt"></i> ご希望日時
+            </div>
+
+            <div class="pref-block">
+                <div class="pref-label">第一希望</div>
+                <div class="date-time-row">
+                    <div class="field-group" style="margin-bottom:0;">
+                        <label>日付 <span style="color:#e74c3c;">*</span></label>
+                        <input type="date" name="第一希望日" id="date1" required>
+                    </div>
+                    <div class="field-group" style="margin-bottom:0;">
+                        <label>時間 <span style="color:#e74c3c;">*</span></label>
+                        <select name="第一希望時間" required>
+                            <option value="">選択</option>
+                            <option>10:00</option><option>10:30</option>
+                            <option>11:00</option><option>11:30</option>
+                            <option>12:00</option><option>12:30</option>
+                            <option>13:00</option><option>13:30</option>
+                            <option>14:00</option><option>14:30</option>
+                            <option>15:00</option><option>15:30</option>
+                            <option>16:00</option><option>16:30</option>
+                            <option>17:00</option><option>17:30</option>
+                            <option>18:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pref-block" style="margin-bottom:0;">
+                <div class="pref-label">第二希望</div>
+                <div class="date-time-row">
+                    <div class="field-group" style="margin-bottom:0;">
+                        <label>日付 <span style="color:#e74c3c;">*</span></label>
+                        <input type="date" name="第二希望日" id="date2" required>
+                    </div>
+                    <div class="field-group" style="margin-bottom:0;">
+                        <label>時間 <span style="color:#e74c3c;">*</span></label>
+                        <select name="第二希望時間" required>
+                            <option value="">選択</option>
+                            <option>10:00</option><option>10:30</option>
+                            <option>11:00</option><option>11:30</option>
+                            <option>12:00</option><option>12:30</option>
+                            <option>13:00</option><option>13:30</option>
+                            <option>14:00</option><option>14:30</option>
+                            <option>15:00</option><option>15:30</option>
+                            <option>16:00</option><option>16:30</option>
+                            <option>17:00</option><option>17:30</option>
+                            <option>18:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 確認チェック -->
+        <label class="check-card">
+            <input type="checkbox" name="確認事項" value="確認済み" required>
+            <span class="check-card-text">
+                対応時間（平日・土曜 10:00〜18:00）を確認しました。<br>
+                本回答のみでは予約は確定しません。空き確認後、JBレンタカーよりご連絡いたします。
+            </span>
+        </label>
+
+        <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> 送信する
+        </button>
+
+    </form>
+
+</main>
+
+<footer>
+    &copy; 2025 JBレンタカー石巻店<br>
+    0120-204-625
+</footer>
+
+<script>
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const minDate = `${yyyy}-${mm}-${dd}`;
+
+    document.querySelectorAll('input[type="date"]').forEach(input => {
+        input.setAttribute('min', minDate);
+        input.addEventListener('change', () => {
+            if (!input.value) return;
+            const day = new Date(input.value + 'T00:00:00').getDay();
+            if (day === 0) {
+                alert('日曜日は対応できません。別の日付を選択してください。');
+                input.value = '';
+            }
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
