@@ -7,234 +7,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-            background: #f0f4f8;
-            color: #333;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        header {
-            background: linear-gradient(135deg, #0068e9, #0051b5);
-            padding: 20px 16px 24px;
-            text-align: center;
-            color: white;
-        }
-
-        header img {
-            max-width: 90px;
-            margin-bottom: 8px;
-        }
-
-        header h1 {
-            font-size: 19px;
-            font-weight: 700;
-            letter-spacing: .05em;
-        }
-
-        header p {
-            font-size: 13px;
-            opacity: .85;
-            margin-top: 4px;
-        }
-
-        main {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px 14px 60px;
-        }
-
-        /* 案内カード */
-        .info-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,.07);
-            padding: 18px 18px 14px;
-            margin-bottom: 16px;
-        }
-
-        .info-card-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        body { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; background: #f0f4f8; color: #333; -webkit-font-smoothing: antialiased; }
+        header { background: linear-gradient(135deg, #0068e9, #0051b5); padding: 20px 16px 24px; text-align: center; color: white; }
+        header img { max-width: 90px; margin-bottom: 8px; }
+        header h1 { font-size: 19px; font-weight: 700; letter-spacing: .05em; }
+        header p { font-size: 13px; opacity: .85; margin-top: 4px; }
+        main { max-width: 600px; margin: 0 auto; padding: 20px 14px 60px; }
+        .info-card { background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.07); padding: 18px 18px 14px; margin-bottom: 16px; }
+        .info-card-title { font-size: 14px; font-weight: 700; color: #333; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
         .info-card-title i { color: #0068e9; }
-
-        .info-card p {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.75;
-        }
-
-        /* 工場情報 */
-        .shop-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 13px;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 8px;
-        }
-
-        .shop-row i {
-            color: #0068e9;
-            width: 16px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        /* フォームカード */
-        .form-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0,0,0,.08);
-            padding: 22px 18px;
-            margin-bottom: 16px;
-        }
-
-        .form-card-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .info-card p { font-size: 13px; color: #555; line-height: 1.75; }
+        .shop-row { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 8px; }
+        .shop-row i { color: #0068e9; width: 16px; flex-shrink: 0; margin-top: 2px; }
+        .form-card { background: white; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.08); padding: 22px 18px; margin-bottom: 16px; }
+        .form-card-title { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
         .form-card-title i { color: #0068e9; }
-
-        .field-group {
-            margin-bottom: 14px;
-        }
-
-        .field-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 700;
-            color: #555;
-            margin-bottom: 6px;
-        }
-
-        .field-group input,
-        .field-group select {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid #dde3ec;
-            border-radius: 10px;
-            font-size: 15px;
-            font-family: inherit;
-            color: #333;
-            background: #fafbfd;
-            transition: border-color .2s, box-shadow .2s;
-            -webkit-appearance: none;
-        }
-
-        .field-group input:focus,
-        .field-group select:focus {
-            outline: none;
-            border-color: #0068e9;
-            box-shadow: 0 0 0 3px rgba(0,104,233,.15);
-            background: white;
-        }
-
-        .field-hint {
-            font-size: 12px;
-            color: #999;
-            margin-top: 5px;
-        }
-
-        /* 希望日セクション */
-        .pref-block {
-            background: #f7f9fc;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 14px;
-        }
-
-        .pref-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: #0068e9;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .date-time-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        /* 確認チェック */
-        .check-card {
-            background: #fff8e1;
-            border: 1.5px solid #ffc600;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            cursor: pointer;
-        }
-
-        .check-card input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            margin-top: 1px;
-            accent-color: #0068e9;
-            cursor: pointer;
-        }
-
-        .check-card-text {
-            font-size: 13px;
-            color: #7a6000;
-            line-height: 1.7;
-        }
-
-        /* 送信ボタン */
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #0068e9, #0051b5);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
-            font-family: inherit;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,104,233,.35);
-            transition: transform .2s, box-shadow .2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .submit-btn:active {
-            transform: scale(.98);
-            box-shadow: 0 2px 6px rgba(0,104,233,.3);
-        }
-
-        footer {
-            background: linear-gradient(135deg, #0068e9, #0051b5);
-            color: white;
-            text-align: center;
-            padding: 18px;
-            font-size: 13px;
-            line-height: 1.8;
-        }
+        .field-group { margin-bottom: 14px; }
+        .field-group label { display: block; font-size: 13px; font-weight: 700; color: #555; margin-bottom: 6px; }
+        .field-group input, .field-group select { width: 100%; padding: 12px 14px; border: 1.5px solid #dde3ec; border-radius: 10px; font-size: 15px; font-family: inherit; color: #333; background: #fafbfd; transition: border-color .2s, box-shadow .2s; -webkit-appearance: none; }
+        .field-group input:focus, .field-group select:focus { outline: none; border-color: #0068e9; box-shadow: 0 0 0 3px rgba(0,104,233,.15); background: white; }
+        .pref-block { background: #f7f9fc; border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+        .pref-label { font-size: 12px; font-weight: 700; color: #0068e9; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+        .date-time-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .check-card { background: #fff8e1; border: 1.5px solid #ffc600; border-radius: 12px; padding: 16px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+        .check-card input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; accent-color: #0068e9; cursor: pointer; }
+        .check-card-text { font-size: 13px; color: #7a6000; line-height: 1.7; }
+        .submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #0068e9, #0051b5); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; box-shadow: 0 4px 12px rgba(0,104,233,.35); transition: transform .2s, box-shadow .2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .submit-btn:disabled { opacity: .5; cursor: not-allowed; }
+        .submit-btn:not(:disabled):active { transform: scale(.98); box-shadow: 0 2px 6px rgba(0,104,233,.3); }
+        footer { background: linear-gradient(135deg, #0068e9, #0051b5); color: white; text-align: center; padding: 18px; font-size: 13px; line-height: 1.8; }
     </style>
 </head>
 <body>
@@ -246,52 +47,29 @@
 </header>
 
 <main>
-
-    <!-- 案内 -->
     <div class="info-card">
-        <div class="info-card-title">
-            <i class="fas fa-info-circle"></i> ご案内
-        </div>
+        <div class="info-card-title"><i class="fas fa-info-circle"></i> ご案内</div>
         <p>現在お貸し出し中のレンタカーはタイヤ交換の時期を迎えております。ご希望の日程を第一・第二希望でお知らせください。提携先工場の空き状況を確認後、予約確定のご連絡をいたします。</p>
     </div>
 
-    <!-- 工場情報 -->
     <div class="info-card">
-        <div class="info-card-title">
-            <i class="fas fa-warehouse"></i> タイヤ交換先
-        </div>
-        <div class="shop-row">
-            <i class="fas fa-building"></i>
-            <span>合同会社なないろ（担当：佐々木様）</span>
-        </div>
-        <div class="shop-row">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>石巻市須江関ノ入39</span>
-        </div>
-        <div class="shop-row">
-            <i class="fas fa-clock"></i>
-            <span>対応時間：平日・土曜 10:00〜18:00<br><span style="color:#e74c3c;font-weight:700;">日曜・祝日は対応不可</span></span>
-        </div>
+        <div class="info-card-title"><i class="fas fa-warehouse"></i> タイヤ交換先</div>
+        <div class="shop-row"><i class="fas fa-building"></i><span>合同会社なないろ（担当：佐々木様）</span></div>
+        <div class="shop-row"><i class="fas fa-map-marker-alt"></i><span>石巻市須江関ノ入39</span></div>
+        <div class="shop-row"><i class="fas fa-clock"></i><span>対応時間：平日・土曜 10:00〜18:00<br><span style="color:#e74c3c;font-weight:700;">日曜・祝日は対応不可</span></span></div>
     </div>
 
-    <!-- フォーム -->
-    <form action="https://ssgform.com/s/4MtuF6rGAOkr" method="post">
-
+    <form id="tire-form" onsubmit="return false;">
         <div class="form-card">
-            <div class="form-card-title">
-                <i class="fas fa-user"></i> ご契約者情報
-            </div>
+            <div class="form-card-title"><i class="fas fa-user"></i> ご契約者情報</div>
             <div class="field-group">
                 <label>ご契約者名 <span style="color:#e74c3c;">*</span></label>
-                <input type="text" name="ご契約者名" placeholder="例）石巻 太郎" required>
+                <input type="text" name="ご契約者名" id="contractor" placeholder="例）石巻 太郎" required>
             </div>
         </div>
 
         <div class="form-card">
-            <div class="form-card-title">
-                <i class="fas fa-calendar-alt"></i> ご希望日時
-            </div>
-
+            <div class="form-card-title"><i class="fas fa-calendar-alt"></i> ご希望日時</div>
             <div class="pref-block">
                 <div class="pref-label">第一希望</div>
                 <div class="date-time-row">
@@ -301,17 +79,12 @@
                     </div>
                     <div class="field-group" style="margin-bottom:0;">
                         <label>時間 <span style="color:#e74c3c;">*</span></label>
-                        <select name="第一希望時間" required>
+                        <select name="第一希望時間" id="time1" required>
                             <option value="">選択</option>
-                            <option>10:00</option><option>10:30</option>
-                            <option>11:00</option><option>11:30</option>
-                            <option>12:00</option><option>12:30</option>
-                            <option>13:00</option><option>13:30</option>
-                            <option>14:00</option><option>14:30</option>
-                            <option>15:00</option><option>15:30</option>
-                            <option>16:00</option><option>16:30</option>
-                            <option>17:00</option><option>17:30</option>
-                            <option>18:00</option>
+                            <option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
+                            <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option>
+                            <option>14:00</option><option>14:30</option><option>15:00</option><option>15:30</option>
+                            <option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option>
                         </select>
                     </div>
                 </div>
@@ -326,38 +99,30 @@
                     </div>
                     <div class="field-group" style="margin-bottom:0;">
                         <label>時間 <span style="color:#e74c3c;">*</span></label>
-                        <select name="第二希望時間" required>
+                        <select name="第二希望時間" id="time2" required>
                             <option value="">選択</option>
-                            <option>10:00</option><option>10:30</option>
-                            <option>11:00</option><option>11:30</option>
-                            <option>12:00</option><option>12:30</option>
-                            <option>13:00</option><option>13:30</option>
-                            <option>14:00</option><option>14:30</option>
-                            <option>15:00</option><option>15:30</option>
-                            <option>16:00</option><option>16:30</option>
-                            <option>17:00</option><option>17:30</option>
-                            <option>18:00</option>
+                            <option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
+                            <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option>
+                            <option>14:00</option><option>14:30</option><option>15:00</option><option>15:30</option>
+                            <option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 確認チェック -->
         <label class="check-card">
-            <input type="checkbox" name="確認事項" value="確認済み" required>
+            <input type="checkbox" id="confirm" required>
             <span class="check-card-text">
                 対応時間（平日・土曜 10:00〜18:00）を確認しました。<br>
                 本回答のみでは予約は確定しません。空き確認後、JBレンタカーよりご連絡いたします。
             </span>
         </label>
 
-        <button type="submit" class="submit-btn">
+        <button type="button" class="submit-btn" id="submit-btn" onclick="submitForm()">
             <i class="fas fa-paper-plane"></i> 送信する
         </button>
-
     </form>
-
 </main>
 
 <footer>
@@ -365,35 +130,77 @@
     0120-204-625
 </footer>
 
-<script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAsjuxTQRPx7LoaIcFsu0mYF_3PR9NKkEc",
+        authDomain: "jb-rentacar.firebaseapp.com",
+        projectId: "jb-rentacar",
+        storageBucket: "jb-rentacar.firebasestorage.app",
+        messagingSenderId: "260306920043",
+        appId: "1:260306920043:web:c0742d3fc0c585cc55872e"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // 最小日付を今日に
     const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
-    const minDate = `${yyyy}-${mm}-${dd}`;
+    const minDate = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+    document.querySelectorAll('input[type="date"]').forEach(i => i.setAttribute('min', minDate));
 
-    document.querySelectorAll('input[type="date"]').forEach(input => {
-        input.setAttribute('min', minDate);
-    });
+    window.submitForm = async function () {
+        const contractor = document.getElementById('contractor').value.trim();
+        const date1 = document.getElementById('date1').value;
+        const time1 = document.getElementById('time1').value;
+        const date2 = document.getElementById('date2').value;
+        const time2 = document.getElementById('time2').value;
+        const confirmed = document.getElementById('confirm').checked;
 
-    // 送信時に日曜チェック
-    document.querySelector('form').addEventListener('submit', function(e) {
-        const dateInputs = [
-            { el: document.querySelector('[name="第一希望日"]'), label: '第一希望' },
-            { el: document.querySelector('[name="第二希望日"]'), label: '第二希望' },
-        ];
-        for (const { el, label } of dateInputs) {
-            if (el.value) {
-                const day = new Date(el.value + 'T00:00:00').getDay();
-                if (day === 0) {
-                    e.preventDefault();
-                    alert(`${label}に日曜日が選択されています。平日または土曜日を選択してください。`);
-                    el.focus();
-                    return;
-                }
+        if (!contractor || !date1 || !time1 || !date2 || !time2) { alert('すべての項目を入力してください。'); return; }
+        if (!confirmed) { alert('確認事項にチェックしてください。'); return; }
+
+        // 日曜チェック
+        for (const [d, label] of [[date1,'第一希望'],[date2,'第二希望']]) {
+            if (new Date(d + 'T00:00:00').getDay() === 0) {
+                alert(`${label}に日曜日が選択されています。平日または土曜日を選択してください。`);
+                return;
             }
         }
-    });
+
+        const btn = document.getElementById('submit-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 送信中...';
+
+        try {
+            await addDoc(collection(db, "rentacar", "tireChanges", "items"), {
+                "ご契約者名": contractor,
+                "第一希望日": date1,
+                "第一希望時間": time1,
+                "第二希望日": date2,
+                "第二希望時間": time2,
+                "対応状況": "未対応",
+                "受付日時": serverTimestamp()
+            });
+
+            // ssgform 通知（失敗しても本体は止めない）
+            try {
+                const sf = new FormData();
+                sf.append("ご契約者名", contractor);
+                sf.append("第一希望", `${date1} ${time1}`);
+                sf.append("第二希望", `${date2} ${time2}`);
+                await fetch('https://ssgform.com/s/4MtuF6rGAOkr', { method: 'POST', mode: 'no-cors', body: sf });
+            } catch (ssgErr) { console.error("ssgform通知エラー:", ssgErr); }
+
+            window.location.href = 'https://jbrentacar.github.io/done/check-buse.html';
+
+        } catch (e) {
+            alert('送信に失敗しました。通信状況を確認して再度お試しください。\n' + e.message);
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> 送信する';
+        }
+    };
 </script>
 
 </body>
